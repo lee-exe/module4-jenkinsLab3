@@ -1,10 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'python:3.8'}
+    }
 
     stages {
          stage('Init') {
             steps {
-                sh 'curl https://get.docker.com | bash'
                 sh 'docker rm -f $(docker ps -qa) || true'
             }
         }
